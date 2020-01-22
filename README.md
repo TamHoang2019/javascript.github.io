@@ -3,9 +3,11 @@
 1. Giả sử các file chức năng nhỏ được đặt trong 1 folder tên là **ulti**
 2. Mỗi file chức năng sau khi hoàn tất nhiệm vụ, đều bắt buộc phải truyền giá trị của mình cho các file khác sử dụng thông qua object có sẵn là **module.exports**, cú pháp được viết như sau: <br>
   <code>module.exports = tênBiến; </code>
+  
   tênBiến là cái mà chúng ta muốn các file khác sử dụng, nó có thể là 1 giá trị primative như string, number, boolean, cũng có thể là object, mảng, hàm ....
 3. File javascript nào muốn sử dụng file chức năng thì sử dụng cú pháp: <br>
-<code> let tênBiến = require('đường-dẫn-đến/ulti/tên-file-chức-năng'); </code>
+<code> var tênBiến = require('đường-dẫn-đến/ulti/tên-file-chức-năng'); </code>
+  
   tênBiến đặt tuỳ ý, có thể trùng hoặc không trùng với tênBiến ở các file con exports ra. 
   Giá trị của tênBiến nhận được là nội dung của biến tênBiến trong file con exports ra.
 4. Trong folder **ulti** này tạo 1 file javascript chạy chính là **index.js** 
@@ -26,16 +28,19 @@
 ---
 > Lưu ý: 
 Nếu trong 1 file chức năng muốn exports ra nhiều giá trị được lưu trữ trong nhiều biến khác nhau. Thì mỗi biến sẽ trở thành 1 key trong object exports, cú pháp ghi như sau:
-
+<code>
 module.exports.a = a;
 module.exports.b = b;
+</code>
 
 hoặc viết gọn là
 
-module.exports = { a: a, b:b }
+<code>module.exports = { a: a, b:b }</code>
 
 Vậy thì, khi file khác sử dụng file này sẽ require 2 lần: 
 
+<code>
 var a = require('./tên-file-có-export').a;
 
 var b = require('./tên-file-có-export').b;
+</code>
