@@ -8,17 +8,20 @@
 <code> let tênBiến = require('đường-dẫn-đến-tên-file-chức-năng'); </code>
   tênBiến đặt tuỳ ý, có thể trùng hoặc không trùng với tênBiến ở các file con exports ra. 
   Giá trị của tên Biến nhận được là nội dung của biến tênBiến trong file con exports ra.
-3. Trong folder **ulti** này sẽ có 1 file javascript chạy chính là **index.js** 
- * File index.js có nhiệm vụ import các file chức năng.
+4. Trong folder **ulti** này tạo 1 file javascript chạy chính là **index.js** 
+ * File index.js có nhiệm vụ import tất cả các file chức năng.
  
-   <code> let tênBiến = require('./tênFile'); </code>
-   
+   <code> var tênBiến = require('./tênFile'); </code>
+  
+ * Và cuối cùng là exports ra toàn bộ các biến vào trong 1 object.
+
    <code> module.exports = {
               tênBiến:tênBiến
   } </code>
 
- * Để khi các file javascript nào cần sử dụng các file chức năng, thì chỉ cần require đến file index.js này là được.
-3. Như vậy, ở các file chức năng luôn phải có **exports** theo cú pháp là:
+5. Lúc này, các file khác sử dụng folder ulti này bằng cú pháp sau: 
+ <code> var tênBiến = require('./ulti').tênBiến; </code>
+
 
 > Lưu ý: 
 Nếu trong 1 file chức năng muốn exports ra nhiều giá trị được lưu trữ trong nhiều biến khác nhau. Thì mỗi biến sẽ trở thành 1 key trong object exports, cú pháp ghi như sau:
